@@ -1,0 +1,18 @@
+import yt_dlp
+
+#playlist_url = "https://youtube.com/playlist?list=PLPPcX_kN5WfKR1vQqAYheRkA1imop2Cuw&si=oTGl1qSRnjDriArb"
+playlist_url = "https://youtube.com/playlist?list=PLPPcX_kN5WfKR1vQqAYheRkA1imop2Cuw&si=ht4ZBmARARqee50b"
+
+ydl_opts = {
+    'format': 'bestaudio/best',
+    'ignoreerrors': True,   # <<< ESSENCIAL
+    'outtmpl': 'playlist_audio/%(playlist_title)s/%(playlist_index)02d - %(title)s.%(ext)s',
+    'postprocessors': [{
+        'key': 'FFmpegExtractAudio',
+        'preferredcodec': 'mp3',
+        'preferredquality': '192',
+    }],
+}
+
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    ydl.download([playlist_url])
