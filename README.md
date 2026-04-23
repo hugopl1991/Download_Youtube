@@ -1,125 +1,45 @@
-🎬 YouTube Downloader (Python + yt-dlp)
+# 🎬 YouTube Downloader (Python + yt-dlp)
 
-Script em Python para baixar vídeos, áudios ou playlists completas do YouTube utilizando yt-dlp.
+Esse projeto é um **script em Python** para baixar vídeos, áudios e playlists completas do **YouTube** utilizando a biblioteca **yt-dlp** com suporte ao **FFmpeg** para conversão automática de formatos.
 
-📌 Funcionalidades
+Ideal para quem deseja automatizar downloads de conteúdo e organizar facilmente os arquivos baixados.
 
-✅ Download de vídeo com áudio (MP4)
+---
 
-✅ Download somente áudio (MP3)
+## 🚀 Funcionalidades
 
-✅ Download de playlists completas
+✔️ Download de vídeo com áudio (MP4)  
+✔️ Download de áudio (MP3)  
+✔️ Download de playlists completas  
+✔️ Organização automática por pastas  
+✔️ Conversão automática para MP3  
+✔️ Ignora vídeos privados/removidos  
+✔️ Evita downloads duplicados usando arquivo de histórico
 
-✅ Organização automática por pasta
+---
 
-✅ Conversão automática para MP3
+## 🛠️ Requisitos
 
-✅ Ignora vídeos privados/removidos
+Antes de usar este script, você precisa ter instalado:
 
-✅ Evita downloads duplicados
+- Python **3.9+**
+- **yt-dlp**
+- **FFmpeg**
 
-🛠️ Requisitos
+> O `yt-dlp` é uma ferramenta aprimorada baseada no antigo `youtube-dl`, usada para baixar vídeos e áudios de várias plataformas, incluindo o YouTube. :contentReference[oaicite:0]{index=0}
 
-Python 3.9+
+---
 
-yt-dlp
-
-FFmpeg
-
-📦 Instalação
-1️⃣ Criar ambiente (opcional, mas recomendado)
-conda create -n yt python=3.10
-conda activate yt
-2️⃣ Instalar dependências
-pip install yt-dlp
-conda install -c conda-forge ffmpeg
-🚀 Como Usar
-▶️ Baixar vídeo com áudio (MP4)
-import yt_dlp
-
-url = "https://www.youtube.com/watch?v=VIDEO_ID"
-
-ydl_opts = {
-    'format': 'bestvideo+bestaudio/best',
-    'merge_output_format': 'mp4',
-}
-
-with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-    ydl.download([url])
-🎵 Baixar somente áudio (MP3)
-import yt_dlp
-
-url = "https://www.youtube.com/watch?v=VIDEO_ID"
-
-ydl_opts = {
-    'format': 'bestaudio/best',
-    'postprocessors': [{
-        'key': 'FFmpegExtractAudio',
-        'preferredcodec': 'mp3',
-        'preferredquality': '192',
-    }],
-}
-
-with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-    ydl.download([url])
-📂 Baixar playlist inteira (somente áudio)
-import yt_dlp
-
-playlist_url = "https://www.youtube.com/playlist?list=PLAYLIST_ID"
-
-ydl_opts = {
-    'format': 'bestaudio/best',
-    'ignoreerrors': True,
-    'download_archive': 'baixados.txt',
-    'outtmpl': 'playlist_audio/%(playlist_title)s/%(playlist_index)02d - %(title)s.%(ext)s',
-    'postprocessors': [{
-        'key': 'FFmpegExtractAudio',
-        'preferredcodec': 'mp3',
-        'preferredquality': '192',
-    }],
-}
-
-with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-    ydl.download([playlist_url])
-📁 Estrutura de Pastas Gerada
-playlist_audio/
- └── Nome da Playlist/
-     ├── 01 - Video 1.mp3
-     ├── 02 - Video 2.mp3
-     └── ...
-⚠️ Problemas Comuns
-🔹 Vídeo indisponível
-
-Resolvido com:
-
-'ignoreerrors': True
-🔹 Aviso sobre JavaScript Runtime
-
-Opcionalmente instalar Node.js:
-
-conda install -c conda-forge nodejs
-📚 Opções Úteis
-Objetivo	Opção
-Melhor áudio	bestaudio/best
-Melhor vídeo + áudio	bestvideo+bestaudio
-Converter para MP3	FFmpegExtractAudio
-Evitar duplicados	download_archive
-Baixar intervalo da playlist	playlist_items
-🧠 Dicas
-
-Use download_archive para não baixar o mesmo vídeo duas vezes.
-
-Use playlist_items para dividir playlists grandes.
-
-Sempre mantenha yt-dlp atualizado:
-
-pip install -U yt-dlp
-📄 Licença
+## 📄 Licença
 
 Uso educacional e pessoal.
 Respeite sempre os termos de uso do YouTube e os direitos autorais do conteúdo baixado.
 
-👨‍💻 Autor
+---
+
+## 👨‍💻 Autor
 
 Hugo Lima
 Projeto pessoal para automação de downloads via Python.
+
+---
